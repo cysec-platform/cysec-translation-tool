@@ -1,0 +1,110 @@
+<?xml version='1.0'?>
+<questionnaire xmlns="https://smesec.eu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://smesec.eu https://smesec.eu/questionnaire.xsd"
+               id="cysec-coach-msesec-demo" readableName="Demo Coach MSESEC" readableClass="DEMO-MSESEC" version="2" order="0" language="en">
+    <description>
+        The is the MSE-Security Demo-Coach.
+    </description>
+
+    <attachments>
+        <attachment id="icon">
+            <content filename="hexagon_msesec_demo.png"/>
+        </attachment>
+    </attachments>
+
+    <questions>
+        <question id="msesecdemo-q10" type="text" hidden="false">
+            <text>How many employees does your company have approximately?</text>
+            <attachments/>
+            <listeners/>
+            <metadata key="_cysec.logic">
+                <mvalue key="default">
+                    <stringValue>
+                        TRUE : default : {
+                            addScore("strengthMax", 1);
+                            addScore("knowhowMax", 1);
+                            addScore("UUMax", 1);
+                        };
+                    </stringValue>
+                </mvalue>
+            </metadata>
+            <instruction>
+                <text>
+                    &lt;p&gt;Configure the company size defining the number of employees. You can adapt the number, for example as your company grows.&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;The size of the company affects your needs for cybersecurity practices. For example, a medium-sized company will benefit from company-internal cybersecurity expertise and dedicated budgeting. A small company benefits more from outsourcing of such specialty expertise. CYSEC will adapt its recommendations accordingly.&lt;/p&gt; &lt;p&gt;Document the headcount (number of people) and not the full-time-equivalent. For example, a company with 10 employee working with a 60% contract should state 10 and not 6. Also, do count special roles such as the CEO as an employee.&lt;/p&gt;</text>
+            </instruction>
+        </question>
+        <question id="msesecdemo-q20" type="yesno" hidden="false">
+            <text>Does your company have a company-internal IT department?</text>
+            <readMore>A readmore of this question</readMore>
+            <attachments/>
+            <options correct="msesecdemo-q20o1">
+                <option id="msesecdemo-q20o2">
+                    <text>NO</text>
+                    <comment>We recommend you to discuss cybersecurity with your IT service provider. Approach the SMESEC team if you would like to obtain guidance.</comment>
+                    <attachments></attachments>
+                </option>
+                <option id="msesecdemo-q20o1">
+                    <text>YES</text>
+                    <comment>Good. This is an asset for your cyber defense. We recommend you to employ some staff with cybersecurity expertise.</comment>
+                    <attachments/>
+                </option>
+            </options>
+            <listeners/>
+            <metadata key="_cysec.logic">
+                <mvalue key="default">
+                    <stringValue>
+                        TRUE : default : {
+                         addScore("knowhowMax", 1);
+                        };
+                        not(isAnswered("msesecdemo-q20")) : q20not : {
+                          addScore("knowhow",-1);
+                        };
+                    </stringValue>
+                </mvalue>
+            </metadata>
+            <instruction>
+                <text>
+                    &lt;p&gt;State changed you have a dedicated group of employees who are responsible for your company&amp;rsquo;s IT.&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;Know your limits. A company without own IT expertise benefits from external experts who offer cybersecurity expertise. CYSEC will indicate when it is safe for your company to do things yourself and when it safer to seek external help.&lt;/p&gt; &lt;p&gt;An IT department provides essential services for ensuring a company's vitality. The IT department is not just responsible for the networks and servers, but also for cybersecurity.&lt;/p&gt; &lt;p&gt;When your company is attacked, the IT department leads emergency management. The IT department delivers robust cybersecurity by should taking direction in how your company responds to cyber-attacks. The IT team members should be alert and aware at all times of possible threats and have the cybersecurity plan that includes the practices you find in the coaches of the CYSEC tool.&lt;/p&gt; &lt;p style=&quot;text-align: right;&quot;&gt;&lt;a href=&quot;/&quot;&gt;Activate coach for Malware Scans ...&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Your company&amp;rsquo;s cyber-security knowledge will be concentrated within the IT department. The IT department defines and maintains your company&amp;rsquo;s approach and your employees' training in cybersecurity. Everybody must be aware of how their online behaviourputs both themselves and their work environment at risk. The IT department knows the cyber-attacks the company is exposed to and the tactics that hackers use. By providing the company&amp;rsquo;s employees with training, e.g. where actual attacks can be experienced in the company's real-life scenarios, the IT department can keep the business secure.&lt;/p&gt; &lt;p style=&quot;text-align: right;&quot;&gt;&lt;a href=&quot;/&quot;&gt;Activate coach for End-user Training ...&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt;
+                </text>
+            </instruction>
+        </question>
+    </questions>
+
+    <blocks>
+        <listeners/>
+        <block title="UnknownBlock" qid-list="msesecdemo-q10" position="1" id="b1">
+            <listeners/>
+            <instruction>
+                <text>Test</text>
+            </instruction>
+        </block>
+    </blocks>
+
+    <library id="eu.smesec.platform.coach.msesec.demo.DemoMsesecLib"/>
+
+    <metadata key="_cysec.logic">
+        <mvalue key="preQuestion">
+            <stringValue>
+                TRUE : preQuestion : {
+                    addScore("uu", 0);
+                };
+            </stringValue>
+        </mvalue>
+        <mvalue key="postQuestion">
+            <stringValue>
+                isSelected("msesecdemo-q60o2") : NoBusinessYetBadge : {
+                    awardBadge("NoBusinessYet", "Bronze");
+                };
+                TRUE : NoBusinessYetBadge : revokeBadge("NoBusinessYet");
+            </stringValue>
+        </mvalue>
+        <mvalue key="onBegin">
+            <stringValue>
+                TRUE : onBegin : {
+                    addBadge( "LastManStanding", 1, "", "", "Not assigned yet", "lib-company,msesecdemo-q20" );
+                };
+            </stringValue>
+        </mvalue>
+    </metadata>
+
+</questionnaire>
+

@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:okp="okapi-framework:xliff-extensions" xmlns:its="http://www.w3.org/2005/11/its" xmlns:itsxlf="http://www.w3.org/ns/its-xliff/" version="1.2" its:version="2.0">
+  <file original="coach.xml" source-language="en" datatype="xml" target-language="de">
+    <body>
+      <trans-unit id="coach-readable-name">
+        <source xml:lang="en">Demo Coach MSESEC</source>
+        <target>Demo Coach MSESEC</target>
+      </trans-unit>
+      <trans-unit id="coach-readable-class">
+        <source xml:lang="en">DEMO-MSESEC</source>
+        <target>DEMO-MSESEC</target>
+      </trans-unit>
+      <trans-unit id="coach-description">
+        <source xml:lang="en">The is the MSE-Security Demo-Coach.</source>
+        <target>Dies ist der MSE-Security Demo-Coach.</target>
+      </trans-unit>
+      <trans-unit id="QST:msesecdemo-q10||text">
+        <source xml:lang="en">How many employees does your company have approximately?</source>
+        <target>Wie viele Mitarbeiter arbeiten in ihrer Firma?</target>
+      </trans-unit>
+      <trans-unit id="QST:msesecdemo-q10||instruction">
+        <source xml:lang="en">
+                    &lt;p&gt;Configure the company size defining the number of employees. You can adapt the number, for example as your company grows.&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;The size of the company affects your needs for cybersecurity practices. For example, a medium-sized company will benefit from company-internal cybersecurity expertise and dedicated budgeting. A small company benefits more from outsourcing of such specialty expertise. CYSEC will adapt its recommendations accordingly.&lt;/p&gt; &lt;p&gt;Document the headcount (number of people) and not the full-time-equivalent. For example, a company with 10 employee working with a 60% contract should state 10 and not 6. Also, do count special roles such as the CEO as an employee.&lt;/p&gt;</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="QST:msesecdemo-q20||text">
+        <source xml:lang="en">Does your company have a company-internal IT department?</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="QST:msesecdemo-q20||OPT:msesecdemo-q20o2||text">
+        <source xml:lang="en">NO</source>
+        <target>nein</target>
+      </trans-unit>
+      <trans-unit id="QST:msesecdemo-q20||OPT:msesecdemo-q20o2||comment">
+        <source xml:lang="en">We recommend you to discuss cybersecurity with your IT service provider. Approach the SMESEC team if you would like to obtain guidance.</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="QST:msesecdemo-q20||OPT:msesecdemo-q20o1||text">
+        <source xml:lang="en">YES</source>
+        <target>ja</target>
+      </trans-unit>
+      <trans-unit id="QST:msesecdemo-q20||OPT:msesecdemo-q20o1||comment">
+        <source xml:lang="en">Good. This is an asset for your cyber defense. We recommend you to employ some staff with cybersecurity expertise.</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="QST:msesecdemo-q20||read-more">
+        <source xml:lang="en">A readmore of this question</source>
+        <target>Weitere Informationen für diese Frage</target>
+      </trans-unit>
+      <trans-unit id="QST:msesecdemo-q20||instruction">
+        <source xml:lang="en">
+                    &lt;p&gt;State changed you have a dedicated group of employees who are responsible for your company&amp;rsquo;s IT.&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;Know your limits. A company without own IT expertise benefits from external experts who offer cybersecurity expertise. CYSEC will indicate when it is safe for your company to do things yourself and when it safer to seek external help.&lt;/p&gt; &lt;p&gt;An IT department provides essential services for ensuring a company's vitality. The IT department is not just responsible for the networks and servers, but also for cybersecurity.&lt;/p&gt; &lt;p&gt;When your company is attacked, the IT department leads emergency management. The IT department delivers robust cybersecurity by should taking direction in how your company responds to cyber-attacks. The IT team members should be alert and aware at all times of possible threats and have the cybersecurity plan that includes the practices you find in the coaches of the CYSEC tool.&lt;/p&gt; &lt;p style="text-align: right;"&gt;&lt;a href="/"&gt;Activate coach for Malware Scans ...&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Your company&amp;rsquo;s cyber-security knowledge will be concentrated within the IT department. The IT department defines and maintains your company&amp;rsquo;s approach and your employees' training in cybersecurity. Everybody must be aware of how their online behaviourputs both themselves and their work environment at risk. The IT department knows the cyber-attacks the company is exposed to and the tactics that hackers use. By providing the company&amp;rsquo;s employees with training, e.g. where actual attacks can be experienced in the company's real-life scenarios, the IT department can keep the business secure.&lt;/p&gt; &lt;p style="text-align: right;"&gt;&lt;a href="/"&gt;Activate coach for End-user Training ...&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt;
+                </source>
+        <target/>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
