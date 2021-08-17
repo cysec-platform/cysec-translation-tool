@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <questionnaire xmlns="https://smesec.eu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://smesec.eu https://smesec.eu/questionnaire.xsd"
-               id="cysec-coach-msesec-demo" readableName="Demo Coach MSESEC" readableClass="DEMO-MSESEC" version="2" order="0" language="en">
+               id="cysec-coach-msesec-demo" readableName="Demo Coach MSESEC" version="2" order="0" language="en">
     <description>
         The is the MSE-Security Demo-Coach.
     </description>

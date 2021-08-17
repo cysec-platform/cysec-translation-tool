@@ -6,10 +6,6 @@
         <source xml:lang="en">Demo Coach MSESEC</source>
         <target>Demo Coach MSESEC</target>
       </trans-unit>
-      <trans-unit id="coach-readable-class">
-        <source xml:lang="en">DEMO-MSESEC</source>
-        <target>DEMO-MSESEC</target>
-      </trans-unit>
       <trans-unit id="coach-description">
         <source xml:lang="en">The is the MSE-Security Demo-Coach.</source>
         <target>Dies ist der MSE-Security Demo-Coach.</target>

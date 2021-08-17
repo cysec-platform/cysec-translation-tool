@@ -109,7 +109,6 @@ public class Merger {
 
         // update general attributes with translations
         ta.apply(TextUnitId.attr(TextUnitId.COACH_READABLE_NAME), questionnaire::setReadableName);
-        ta.apply(TextUnitId.attr(TextUnitId.COACH_READABLE_CLASS), questionnaire::setReadableClass);
         ta.apply(TextUnitId.attr(TextUnitId.COACH_DESCRIPTION), questionnaire::setDescription);
 
         // update content of questions with translations

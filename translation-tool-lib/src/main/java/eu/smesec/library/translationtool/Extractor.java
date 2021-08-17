@@ -72,10 +72,6 @@ public class Extractor {
                     questionnaire.getReadableName()
             ));
             writer.writeTextUnit(new TextUnit(
-                    TextUnitId.attr(TextUnitId.COACH_READABLE_CLASS).toString(),
-                    questionnaire.getReadableClass()
-            ));
-            writer.writeTextUnit(new TextUnit(
                     TextUnitId.attr(TextUnitId.COACH_DESCRIPTION).toString(),
                     questionnaire.getDescription()));
 
