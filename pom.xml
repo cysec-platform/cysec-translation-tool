@@ -3,14 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>eu.smesec.platform</groupId>
+    <groupId>eu.smesec.cysec</groupId>
     <artifactId>translation-tool-aggregator</artifactId>
     <version>0.1.0-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
     <modules>
-        <module>translation-tool-lib</module>
+        <module>lib-translation-tool</module>
     </modules>
 
 </project>
