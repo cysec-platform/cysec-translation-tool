@@ -4,7 +4,7 @@
 
     <groupId>eu.smesec.cysec</groupId>
     <artifactId>translation-tool-aggregator</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
@@ -12,7 +12,7 @@
         <connection>scm:git:git://github.com/cysec-platform/cysec-translation-tool.git</connection>
         <developerConnection>scm:git:ssh://github.com/cysec-platform/cysec-translation-tool</developerConnection>
         <url>https://github.com/cysec-platform/cysec-translation-tool</url>
-      <tag>v0.1.0</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <modules>
