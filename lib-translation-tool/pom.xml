@@ -91,7 +91,7 @@
         <dependency>
             <groupId>eu.smesec.cysec.platform</groupId>
             <artifactId>cysec-platform-bridge</artifactId>
-            <version>0.3.0-SNAPSHOT</version>
+            <version>0.3.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -166,9 +166,7 @@
                 <version>2.5.3</version>
                 <configuration>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <useReleaseProfile>false</useReleaseProfile>
-                    <releaseProfiles>release</releaseProfiles>
-                    <goals>deploy</goals>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
                 </configuration>
             </plugin>
             <!-- sources jar for sonatype -->

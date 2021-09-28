@@ -9,8 +9,27 @@
 
     <packaging>pom</packaging>
 
+    <scm>
+        <connection>scm:git:git://github.com/cysec-platform/cysec-translation-tool.git</connection>
+        <developerConnection>scm:git:ssh://github.com/cysec-platform/cysec-translation-tool</developerConnection>
+        <url>https://github.com/cysec-platform/cysec-translation-tool</url>
+    </scm>
+
     <modules>
         <module>lib-translation-tool</module>
     </modules>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
