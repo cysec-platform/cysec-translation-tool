@@ -100,12 +100,12 @@
         <dependency>
             <groupId>net.sf.okapi</groupId>
             <artifactId>okapi-core</artifactId>
-            <version>1.41.0</version>
+            <version>1.42.0</version>
         </dependency>
         <dependency>
             <groupId>net.sf.okapi.filters</groupId>
             <artifactId>okapi-filter-xliff</artifactId>
-            <version>1.41.0</version>
+            <version>1.42.0</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
