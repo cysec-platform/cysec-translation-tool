@@ -52,6 +52,7 @@
             </instruction>
         </question>
         <question id="msesecdemo-q20" type="yesno" hidden="false">
+            <introduction>Test introduction on Q20</introduction>
             <text>Does your company have a company-internal IT department?</text>
             <readMore>A readmore of this question</readMore>
             <attachments/>
