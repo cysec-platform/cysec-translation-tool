@@ -2,7 +2,7 @@
  * #%L
  * CYSEC Translation Tool Library
  * %%
- * Copyright (C) 2021 FHNW (University of Applied Sciences and Arts Northwestern Switzerland)
+ * Copyright (C) 2021 - 2022 FHNW (University of Applied Sciences and Arts Northwestern Switzerland)
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,9 +38,9 @@ public class TextUnitId {
     private static final Logger log = LoggerFactory.getLogger(TextUnitId.class);
 
     public static final String COACH_READABLE_NAME = "coach-readable-name";
-    public static final String COACH_READABLE_CLASS = "coach-readable-class";
     public static final String COACH_DESCRIPTION = "coach-description";
     public static final String QST_TEXT = "text";
+    public static final String QST_INTRODUCTION = "introduction";
     public static final String QST_READ_MORE = "read-more";
     public static final String QST_INSTRUCTION = "instruction";
     public static final String OPT_TEXT = "text";

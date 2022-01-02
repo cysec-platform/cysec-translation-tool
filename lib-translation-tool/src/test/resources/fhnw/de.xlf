@@ -23,6 +23,10 @@
         <source xml:lang="en">Does your company have a company-internal IT department?</source>
         <target/>
       </trans-unit>
+      <trans-unit id="QST:msesecdemo-q20||introduction">
+        <source xml:lang="en">Test introduction on Q20</source>
+        <target>Test Einleitung für Q20</target>
+      </trans-unit>
       <trans-unit id="QST:msesecdemo-q20||OPT:msesecdemo-q20o2||text">
         <source xml:lang="en">NO</source>
         <target>nein</target>

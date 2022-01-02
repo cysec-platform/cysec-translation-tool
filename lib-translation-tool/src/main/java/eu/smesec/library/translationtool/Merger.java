@@ -2,7 +2,7 @@
  * #%L
  * CYSEC Translation Tool Library
  * %%
- * Copyright (C) 2021 FHNW (University of Applied Sciences and Arts Northwestern Switzerland)
+ * Copyright (C) 2021 - 2022 FHNW (University of Applied Sciences and Arts Northwestern Switzerland)
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -133,6 +133,7 @@ public class Merger {
         // update content of questions with translations
         for (Question question : questionnaire.getQuestions().getQuestion()) {
             ta.apply(TextUnitId.attr(TextUnitId.QST_TEXT).qst(question), question::setText);
+            ta.apply(TextUnitId.attr(TextUnitId.QST_INTRODUCTION).qst(question), question::setIntroduction);
             if (question.getOptions() != null) {
                 for (Option option : question.getOptions().getOption()) {
                     if (StringUtils.isNotBlank(option.getText())) {

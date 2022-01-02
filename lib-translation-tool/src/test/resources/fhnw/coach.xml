@@ -3,7 +3,7 @@
   #%L
   CYSEC Translation Tool Library
   %%
-  Copyright (C) 2021 FHNW (University of Applied Sciences and Arts Northwestern Switzerland)
+  Copyright (C) 2021 - 2022 FHNW (University of Applied Sciences and Arts Northwestern Switzerland)
   %%
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -52,6 +52,7 @@
             </instruction>
         </question>
         <question id="msesecdemo-q20" type="yesno" hidden="false">
+            <introduction>Test introduction on Q20</introduction>
             <text>Does your company have a company-internal IT department?</text>
             <readMore>A readmore of this question</readMore>
             <attachments/>

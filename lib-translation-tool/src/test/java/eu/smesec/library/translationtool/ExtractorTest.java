@@ -2,7 +2,7 @@
  * #%L
  * CYSEC Translation Tool Library
  * %%
- * Copyright (C) 2021 FHNW (University of Applied Sciences and Arts Northwestern Switzerland)
+ * Copyright (C) 2021 - 2022 FHNW (University of Applied Sciences and Arts Northwestern Switzerland)
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -77,7 +77,7 @@ public class ExtractorTest {
                 }
             }
         }
-        assertEquals(11, testUnitList.size());
+        assertEquals(12, testUnitList.size());
     }
 
 }

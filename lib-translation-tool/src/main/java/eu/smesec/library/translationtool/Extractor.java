@@ -2,7 +2,7 @@
  * #%L
  * CYSEC Translation Tool Library
  * %%
- * Copyright (C) 2021 FHNW (University of Applied Sciences and Arts Northwestern Switzerland)
+ * Copyright (C) 2021 - 2022 FHNW (University of Applied Sciences and Arts Northwestern Switzerland)
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -100,6 +100,12 @@ public class Extractor {
                         TextUnitId.attr(TextUnitId.QST_TEXT).qst(question).toString(),
                         question.getText()
                 ));
+                if (StringUtils.isNotBlank(question.getIntroduction())) {
+                    writer.writeTextUnit(new TextUnit(
+                            TextUnitId.attr(TextUnitId.QST_INTRODUCTION).qst(question).toString(),
+                            question.getIntroduction()
+                    ));
+                }
                 if (question.getOptions() != null) {
                     for (Option option : question.getOptions().getOption()) {
                         if (StringUtils.isNotBlank(option.getText())) {
