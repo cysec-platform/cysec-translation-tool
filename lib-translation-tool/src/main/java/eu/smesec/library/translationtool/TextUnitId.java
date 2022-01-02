@@ -38,7 +38,6 @@ public class TextUnitId {
     private static final Logger log = LoggerFactory.getLogger(TextUnitId.class);
 
     public static final String COACH_READABLE_NAME = "coach-readable-name";
-    public static final String COACH_READABLE_CLASS = "coach-readable-class";
     public static final String COACH_DESCRIPTION = "coach-description";
     public static final String QST_TEXT = "text";
     public static final String QST_READ_MORE = "read-more";
