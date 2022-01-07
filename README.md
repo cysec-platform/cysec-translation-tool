@@ -5,7 +5,7 @@ This tool supports the translation and build process for multilingual coaches.
 ## Usage
 
 ### Translation Tool Library
-Can be used as a dependency to use the tool programmatically.
+Use this library as a dependency like this:
 
 *Example for Maven:*
 ```xml
