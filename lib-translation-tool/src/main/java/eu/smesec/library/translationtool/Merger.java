@@ -147,6 +147,9 @@ public class Merger {
                     }
                 }
             }
+            if (StringUtils.isNotBlank(question.getInfotext())) {
+                ta.apply(TextUnitId.attr(TextUnitId.QST_INFOTEXT).qst(question), question::setInfotext);
+            }
             if (StringUtils.isNotBlank(question.getReadMore())) {
                 ta.apply(TextUnitId.attr(TextUnitId.QST_READ_MORE).qst(question), question::setReadMore);
             }
