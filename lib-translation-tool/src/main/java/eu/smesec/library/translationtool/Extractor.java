@@ -128,6 +128,12 @@ public class Extractor {
                         }
                     }
                 }
+                if (StringUtils.isNotBlank(question.getInfotext())) {
+                    writer.writeTextUnit(new TextUnit(
+                            TextUnitId.attr(TextUnitId.QST_INFOTEXT).qst(question).toString(),
+                            question.getInfotext()
+                    ));
+                }
                 if (StringUtils.isNotBlank(question.getReadMore())) {
                     writer.writeTextUnit(new TextUnit(
                             TextUnitId.attr(TextUnitId.QST_READ_MORE).qst(question).toString(),

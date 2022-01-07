@@ -77,7 +77,7 @@ public class ExtractorTest {
                 }
             }
         }
-        assertEquals(12, testUnitList.size());
+        assertEquals(14, testUnitList.size());
     }
 
 }
