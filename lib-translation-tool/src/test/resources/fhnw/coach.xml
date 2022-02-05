@@ -19,7 +19,7 @@
   #L%
   -->
 <questionnaire xmlns="https://smesec.eu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://smesec.eu https://smesec.eu/questionnaire.xsd"
-               id="cysec-coach-uvw" readableName="UVW Coach EN" version="2" order="0" language="en">
+               id="lib-uvw" readableName="UVW Coach EN" version="2" order="0" language="en">
     <description>
         The is the UVW Coach EN.
     </description>
@@ -128,5 +128,10 @@
             </stringValue>
         </mvalue>
     </metadata>
+
+    <dictionary>
+        <entry key="recXyz-title">First recommendation</entry>
+        <entry key="recXyz-text">Do this or that.</entry>
+    </dictionary>
 
 </questionnaire>

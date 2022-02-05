@@ -29,7 +29,7 @@ import java.nio.file.Paths;
 import static org.junit.Assert.assertThrows;
 
 /**
- * Test for {@link Merger}.
+ * Tests for the {@link Merger}.
  *
  * @author Matthias Luppi
  */

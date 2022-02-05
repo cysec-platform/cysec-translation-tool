@@ -19,6 +19,7 @@
  */
 package eu.smesec.library.translationtool;
 
+import eu.smesec.cysec.platform.bridge.generated.DictionaryEntry;
 import eu.smesec.cysec.platform.bridge.generated.Option;
 import eu.smesec.cysec.platform.bridge.generated.Question;
 import eu.smesec.cysec.platform.bridge.generated.Questionnaire;
@@ -131,30 +132,39 @@ public class Merger {
         ta.apply(TextUnitId.attr(TextUnitId.COACH_DESCRIPTION), questionnaire::setDescription);
 
         // update content of questions with translations
-        for (Question question : questionnaire.getQuestions().getQuestion()) {
-            ta.apply(TextUnitId.attr(TextUnitId.QST_TEXT).qst(question), question::setText);
-            ta.apply(TextUnitId.attr(TextUnitId.QST_INTRODUCTION).qst(question), question::setIntroduction);
-            if (question.getOptions() != null) {
-                for (Option option : question.getOptions().getOption()) {
-                    if (StringUtils.isNotBlank(option.getText())) {
-                        ta.apply(TextUnitId.attr(TextUnitId.OPT_TEXT).qst(question).opt(option), option::setText);
-                    }
-                    if (StringUtils.isNotBlank(option.getShort())) {
-                        ta.apply(TextUnitId.attr(TextUnitId.OPT_SHORT).qst(question).opt(option), option::setShort);
-                    }
-                    if (StringUtils.isNotBlank(option.getComment())) {
-                        ta.apply(TextUnitId.attr(TextUnitId.OPT_COMMENT).qst(question).opt(option), option::setComment);
+        if (questionnaire.getQuestions() != null) {
+            for (Question question : questionnaire.getQuestions().getQuestion()) {
+                ta.apply(TextUnitId.attr(TextUnitId.QST_TEXT).qst(question), question::setText);
+                ta.apply(TextUnitId.attr(TextUnitId.QST_INTRODUCTION).qst(question), question::setIntroduction);
+                if (question.getOptions() != null) {
+                    for (Option option : question.getOptions().getOption()) {
+                        if (StringUtils.isNotBlank(option.getText())) {
+                            ta.apply(TextUnitId.attr(TextUnitId.OPT_TEXT).qst(question).opt(option), option::setText);
+                        }
+                        if (StringUtils.isNotBlank(option.getShort())) {
+                            ta.apply(TextUnitId.attr(TextUnitId.OPT_SHORT).qst(question).opt(option), option::setShort);
+                        }
+                        if (StringUtils.isNotBlank(option.getComment())) {
+                            ta.apply(TextUnitId.attr(TextUnitId.OPT_COMMENT).qst(question).opt(option), option::setComment);
+                        }
                     }
                 }
+                if (StringUtils.isNotBlank(question.getInfotext())) {
+                    ta.apply(TextUnitId.attr(TextUnitId.QST_INFOTEXT).qst(question), question::setInfotext);
+                }
+                if (StringUtils.isNotBlank(question.getReadMore())) {
+                    ta.apply(TextUnitId.attr(TextUnitId.QST_READ_MORE).qst(question), question::setReadMore);
+                }
+                if (question.getInstruction() != null && StringUtils.isNotBlank(question.getInstruction().getText())) {
+                    ta.apply(TextUnitId.attr(TextUnitId.QST_INSTRUCTION).qst(question), s -> question.getInstruction().setText(s));
+                }
             }
-            if (StringUtils.isNotBlank(question.getInfotext())) {
-                ta.apply(TextUnitId.attr(TextUnitId.QST_INFOTEXT).qst(question), question::setInfotext);
-            }
-            if (StringUtils.isNotBlank(question.getReadMore())) {
-                ta.apply(TextUnitId.attr(TextUnitId.QST_READ_MORE).qst(question), question::setReadMore);
-            }
-            if (question.getInstruction() != null && StringUtils.isNotBlank(question.getInstruction().getText())) {
-                ta.apply(TextUnitId.attr(TextUnitId.QST_INSTRUCTION).qst(question), s -> question.getInstruction().setText(s));
+        }
+
+        // update dictionary with translations
+        if (questionnaire.getDictionary() != null) {
+            for (DictionaryEntry entry : questionnaire.getDictionary().getEntry()) {
+                ta.apply(TextUnitId.attr(TextUnitId.DK_TEXT).dkey(entry.getKey()), entry::setValue);
             }
         }
 

@@ -69,6 +69,14 @@
                 </source>
         <target/>
       </trans-unit>
+      <trans-unit id="DK:recXyz-title||text">
+        <source xml:lang="en">First recommendation</source>
+        <target>Erste Empfehlung</target>
+      </trans-unit>
+      <trans-unit id="DK:recXyz-text||text">
+        <source xml:lang="en">Do this or that.</source>
+        <target>Machen Sie dies oder das.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

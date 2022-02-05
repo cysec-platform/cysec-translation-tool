@@ -40,7 +40,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
 /**
- * Test for {@link Extractor}.
+ * Tests for the {@link Extractor}.
  *
  * @author Matthias Luppi
  */
@@ -77,7 +77,7 @@ public class ExtractorTest {
                 }
             }
         }
-        assertEquals(14, testUnitList.size());
+        assertEquals(16, testUnitList.size());
     }
 
 }

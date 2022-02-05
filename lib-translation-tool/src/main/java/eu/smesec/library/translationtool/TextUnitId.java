@@ -19,6 +19,7 @@
  */
 package eu.smesec.library.translationtool;
 
+import eu.smesec.cysec.platform.bridge.generated.DictionaryEntry;
 import eu.smesec.cysec.platform.bridge.generated.Option;
 import eu.smesec.cysec.platform.bridge.generated.Question;
 import org.slf4j.Logger;
@@ -47,15 +48,17 @@ public class TextUnitId {
     public static final String OPT_TEXT = "text";
     public static final String OPT_SHORT = "short";
     public static final String OPT_COMMENT = "comment";
+    public static final String DK_TEXT = "text";
 
     /**
-     * Pattern to parse an ID to question-id, option-id and attribute
+     * Pattern to parse an ID to question-id, option-id, dictionary-key and attribute
      */
-    private static final Pattern pattern = Pattern.compile("^(?:QST:(?<qid>.*?)\\|\\|(?:OPT:(?<oid>.*?)\\|\\|)?)?(?<attr>.*)$");
+    private static final Pattern idPattern = Pattern.compile("^(?:QST:(?<qid>.*?)\\|\\|(?:OPT:(?<oid>.*?)\\|\\|)?)?(?:DK:(?<dkey>.*?)\\|\\|)?(?<attr>.*)$");
 
     private final String attribute;
     private String questionId;
-    private String optionIn;
+    private String optionId;
+    private String dictionaryKey;
 
     private TextUnitId(String attribute) {
         this.attribute = attribute;
@@ -100,7 +103,7 @@ public class TextUnitId {
      * @return the {@link TextUnitId} with the option-id set
      */
     public TextUnitId opt(Option option) {
-        this.optionIn = option.getId();
+        this.optionId = option.getId();
         return this;
     }
 
@@ -111,20 +114,41 @@ public class TextUnitId {
      * @return the {@link TextUnitId} with the option-id set
      */
     public TextUnitId opt(String optionId) {
-        this.optionIn = optionId;
+        this.optionId = optionId;
         return this;
     }
 
     /**
-     * Parses an ID according to the set properties (question-id, option-id and attribute)
+     * Sets the dictionary-key
+     *
+     * @param entry the {@link DictionaryEntry} of which the dictionary-key should be set
+     * @return the {@link TextUnitId} with the dictionary-key set
+     */
+    public TextUnitId opt(DictionaryEntry entry) {
+        this.optionId = entry.getKey();
+        return this;
+    }
+
+    /**
+     * Set the dictionary-key
+     *
+     * @param dictionaryKey the dictionary-key to be set
+     * @return the {@link TextUnitId} with the dictionary-key set
+     */
+    public TextUnitId dkey(String dictionaryKey) {
+        this.dictionaryKey = dictionaryKey;
+        return this;
+    }
+
+    /**
+     * Parses an ID according to the set properties
      *
      * @param input an ID used as 'trans-id' in an XLIFF file
      * @return a {@link TextUnitId} with attributes according to the input
      */
     public static TextUnitId parse(String input) {
-        final Matcher m = pattern.matcher(input);
+        final Matcher m = idPattern.matcher(input);
         if (!m.matches()) {
-
             log.error("Could not parse '{}'", input);
             throw new IllegalArgumentException("Could not parse '" + input + "'");
         }
@@ -132,7 +156,8 @@ public class TextUnitId {
             return TextUnitId
                     .attr(m.group("attr"))
                     .qst(m.group("qid"))
-                    .opt(m.group("oid"));
+                    .opt(m.group("oid"))
+                    .dkey(m.group("dkey"));
         } catch (IllegalStateException e) {
             log.error("Could not parse '{}'", input);
             throw new IllegalArgumentException("Could not parse '" + input + "'", e);
@@ -140,7 +165,7 @@ public class TextUnitId {
     }
 
     /**
-     * Generates the ID according to the set properties (question-id, option-id and attribute)
+     * Generates the ID according to the set properties
      *
      * @return ID to be used as 'trans-id' in XLIFF files
      */
@@ -151,11 +176,15 @@ public class TextUnitId {
             sb.append("QST:");
             sb.append(questionId);
             sb.append("||");
-            if (optionIn != null) {
+            if (optionId != null) {
                 sb.append("OPT:");
-                sb.append(optionIn);
+                sb.append(optionId);
                 sb.append("||");
             }
+        } else if (dictionaryKey != null) {
+            sb.append("DK:");
+            sb.append(dictionaryKey);
+            sb.append("||");
         }
         sb.append(attribute);
         return sb.toString();
@@ -165,12 +194,16 @@ public class TextUnitId {
         return questionId;
     }
 
-    public String getOptionIn() {
-        return optionIn;
+    public String getOptionId() {
+        return optionId;
     }
 
     public String getAttribute() {
         return attribute;
+    }
+
+    public String getDictionaryKey() {
+        return dictionaryKey;
     }
 
     @Override
@@ -180,14 +213,16 @@ public class TextUnitId {
         final TextUnitId that = (TextUnitId) o;
         if (!attribute.equals(that.attribute)) return false;
         if (!Objects.equals(questionId, that.questionId)) return false;
-        return Objects.equals(optionIn, that.optionIn);
+        if (!Objects.equals(optionId, that.optionId)) return false;
+        return Objects.equals(dictionaryKey, that.dictionaryKey);
     }
 
     @Override
     public int hashCode() {
         int result = attribute.hashCode();
         result = 31 * result + (questionId != null ? questionId.hashCode() : 0);
-        result = 31 * result + (optionIn != null ? optionIn.hashCode() : 0);
+        result = 31 * result + (optionId != null ? optionId.hashCode() : 0);
+        result = 31 * result + (dictionaryKey != null ? dictionaryKey.hashCode() : 0);
         return result;
     }
 }

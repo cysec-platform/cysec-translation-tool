@@ -19,6 +19,7 @@
  */
 package eu.smesec.library.translationtool;
 
+import eu.smesec.cysec.platform.bridge.generated.DictionaryEntry;
 import eu.smesec.cysec.platform.bridge.generated.Option;
 import eu.smesec.cysec.platform.bridge.generated.Question;
 import eu.smesec.cysec.platform.bridge.generated.Questionnaire;
@@ -85,70 +86,91 @@ public class Extractor {
             paramsXliff.setIncludeCodeAttrs(false);
             paramsXliff.setEscapeGt(true);
 
-            // general translatable attributes
-            writer.writeTextUnit(new TextUnit(
-                    TextUnitId.attr(TextUnitId.COACH_READABLE_NAME).toString(),
-                    questionnaire.getReadableName()
-            ));
-            writer.writeTextUnit(new TextUnit(
-                    TextUnitId.attr(TextUnitId.COACH_DESCRIPTION).toString(),
-                    questionnaire.getDescription()));
-
-            // translatable content of questions
-            for (Question question : questionnaire.getQuestions().getQuestion()) {
-                writer.writeTextUnit(new TextUnit(
-                        TextUnitId.attr(TextUnitId.QST_TEXT).qst(question).toString(),
-                        question.getText()
-                ));
-                if (StringUtils.isNotBlank(question.getIntroduction())) {
-                    writer.writeTextUnit(new TextUnit(
-                            TextUnitId.attr(TextUnitId.QST_INTRODUCTION).qst(question).toString(),
-                            question.getIntroduction()
-                    ));
-                }
-                if (question.getOptions() != null) {
-                    for (Option option : question.getOptions().getOption()) {
-                        if (StringUtils.isNotBlank(option.getText())) {
-                            writer.writeTextUnit(new TextUnit(
-                                    TextUnitId.attr(TextUnitId.OPT_TEXT).qst(question).opt(option).toString(),
-                                    option.getText()
-                            ));
-                        }
-                        if (StringUtils.isNotBlank(option.getShort())) {
-                            writer.writeTextUnit(new TextUnit(
-                                    TextUnitId.attr(TextUnitId.OPT_SHORT).qst(question).opt(option).toString(),
-                                    option.getShort()
-                            ));
-                        }
-                        if (StringUtils.isNotBlank(option.getComment())) {
-                            writer.writeTextUnit(new TextUnit(
-                                    TextUnitId.attr(TextUnitId.OPT_COMMENT).qst(question).opt(option).toString(),
-                                    option.getComment()
-                            ));
-                        }
-                    }
-                }
-                if (StringUtils.isNotBlank(question.getInfotext())) {
-                    writer.writeTextUnit(new TextUnit(
-                            TextUnitId.attr(TextUnitId.QST_INFOTEXT).qst(question).toString(),
-                            question.getInfotext()
-                    ));
-                }
-                if (StringUtils.isNotBlank(question.getReadMore())) {
-                    writer.writeTextUnit(new TextUnit(
-                            TextUnitId.attr(TextUnitId.QST_READ_MORE).qst(question).toString(),
-                            question.getReadMore()
-                    ));
-                }
-                if (question.getInstruction() != null && StringUtils.isNotBlank(question.getInstruction().getText())) {
-                    writer.writeTextUnit(new TextUnit(
-                            TextUnitId.attr(TextUnitId.QST_INSTRUCTION).qst(question).toString(),
-                            question.getInstruction().getText()
-                    ));
-                }
-            }
+            extractGeneralAttributes(questionnaire, writer);
+            extractQuestions(questionnaire, writer);
+            extractDictionary(questionnaire, writer);
 
             log.info("Translatable content extracted to '{}'", outputFile);
+        }
+    }
+
+    private void extractGeneralAttributes(final Questionnaire questionnaire, final XLIFFWriter writer) {
+        writer.writeTextUnit(new TextUnit(
+                TextUnitId.attr(TextUnitId.COACH_READABLE_NAME).toString(),
+                questionnaire.getReadableName()
+        ));
+        writer.writeTextUnit(new TextUnit(
+                TextUnitId.attr(TextUnitId.COACH_DESCRIPTION).toString(),
+                questionnaire.getDescription()));
+    }
+
+    private void extractQuestions(final Questionnaire questionnaire, final XLIFFWriter writer) {
+        if (questionnaire.getQuestions() == null) {
+            return;
+        }
+        for (Question question : questionnaire.getQuestions().getQuestion()) {
+            writer.writeTextUnit(new TextUnit(
+                    TextUnitId.attr(TextUnitId.QST_TEXT).qst(question).toString(),
+                    question.getText()
+            ));
+            if (StringUtils.isNotBlank(question.getIntroduction())) {
+                writer.writeTextUnit(new TextUnit(
+                        TextUnitId.attr(TextUnitId.QST_INTRODUCTION).qst(question).toString(),
+                        question.getIntroduction()
+                ));
+            }
+            if (question.getOptions() != null) {
+                for (Option option : question.getOptions().getOption()) {
+                    if (StringUtils.isNotBlank(option.getText())) {
+                        writer.writeTextUnit(new TextUnit(
+                                TextUnitId.attr(TextUnitId.OPT_TEXT).qst(question).opt(option).toString(),
+                                option.getText()
+                        ));
+                    }
+                    if (StringUtils.isNotBlank(option.getShort())) {
+                        writer.writeTextUnit(new TextUnit(
+                                TextUnitId.attr(TextUnitId.OPT_SHORT).qst(question).opt(option).toString(),
+                                option.getShort()
+                        ));
+                    }
+                    if (StringUtils.isNotBlank(option.getComment())) {
+                        writer.writeTextUnit(new TextUnit(
+                                TextUnitId.attr(TextUnitId.OPT_COMMENT).qst(question).opt(option).toString(),
+                                option.getComment()
+                        ));
+                    }
+                }
+            }
+            if (StringUtils.isNotBlank(question.getInfotext())) {
+                writer.writeTextUnit(new TextUnit(
+                        TextUnitId.attr(TextUnitId.QST_INFOTEXT).qst(question).toString(),
+                        question.getInfotext()
+                ));
+            }
+            if (StringUtils.isNotBlank(question.getReadMore())) {
+                writer.writeTextUnit(new TextUnit(
+                        TextUnitId.attr(TextUnitId.QST_READ_MORE).qst(question).toString(),
+                        question.getReadMore()
+                ));
+            }
+            if (question.getInstruction() != null && StringUtils.isNotBlank(question.getInstruction().getText())) {
+                writer.writeTextUnit(new TextUnit(
+                        TextUnitId.attr(TextUnitId.QST_INSTRUCTION).qst(question).toString(),
+                        question.getInstruction().getText()
+                ));
+            }
+        }
+    }
+
+    private void extractDictionary(final Questionnaire questionnaire, final XLIFFWriter writer) {
+        if (questionnaire.getDictionary() == null) {
+            return;
+        }
+        for (DictionaryEntry entry : questionnaire.getDictionary().getEntry()) {
+            writer.writeTextUnit(new TextUnit(
+                    TextUnitId.attr(TextUnitId.DK_TEXT).dkey(entry.getKey()).toString(),
+                    entry.getValue()
+            ));
         }
     }
 }
