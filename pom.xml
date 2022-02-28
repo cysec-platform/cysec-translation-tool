@@ -31,8 +31,8 @@
         <connection>scm:git:git://github.com/cysec-platform/cysec-translation-tool.git</connection>
         <developerConnection>scm:git:ssh://github.com/cysec-platform/cysec-translation-tool</developerConnection>
         <url>https://github.com/cysec-platform/cysec-translation-tool</url>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
     <modules>
         <module>lib-translation-tool</module>
