@@ -46,7 +46,6 @@ public class TextUnitId {
     public static final String QST_INFOTEXT = "infotext";
     public static final String QST_INSTRUCTION = "instruction";
     public static final String OPT_TEXT = "text";
-    public static final String OPT_SHORT = "short";
     public static final String OPT_COMMENT = "comment";
     public static final String DK_TEXT = "text";
 
