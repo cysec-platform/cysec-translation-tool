@@ -127,12 +127,6 @@ public class Extractor {
                                 option.getText()
                         ));
                     }
-                    if (StringUtils.isNotBlank(option.getShort())) {
-                        writer.writeTextUnit(new TextUnit(
-                                TextUnitId.attr(TextUnitId.OPT_SHORT).qst(question).opt(option).toString(),
-                                option.getShort()
-                        ));
-                    }
                     if (StringUtils.isNotBlank(option.getComment())) {
                         writer.writeTextUnit(new TextUnit(
                                 TextUnitId.attr(TextUnitId.OPT_COMMENT).qst(question).opt(option).toString(),

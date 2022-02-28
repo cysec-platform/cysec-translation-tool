@@ -141,9 +141,6 @@ public class Merger {
                         if (StringUtils.isNotBlank(option.getText())) {
                             ta.apply(TextUnitId.attr(TextUnitId.OPT_TEXT).qst(question).opt(option), option::setText);
                         }
-                        if (StringUtils.isNotBlank(option.getShort())) {
-                            ta.apply(TextUnitId.attr(TextUnitId.OPT_SHORT).qst(question).opt(option), option::setShort);
-                        }
                         if (StringUtils.isNotBlank(option.getComment())) {
                             ta.apply(TextUnitId.attr(TextUnitId.OPT_COMMENT).qst(question).opt(option), option::setComment);
                         }
