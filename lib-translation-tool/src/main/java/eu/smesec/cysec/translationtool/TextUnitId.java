@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package eu.smesec.library.translationtool;
+package eu.smesec.cysec.translationtool;
 
 import eu.smesec.cysec.platform.bridge.generated.DictionaryEntry;
 import eu.smesec.cysec.platform.bridge.generated.Option;

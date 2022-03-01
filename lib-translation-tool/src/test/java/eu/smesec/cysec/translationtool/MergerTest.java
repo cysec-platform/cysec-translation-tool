@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package eu.smesec.library.translationtool;
+package eu.smesec.cysec.translationtool;
 
 import org.junit.Test;
 
