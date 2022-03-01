@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package eu.smesec.library.translationtool;
+package eu.smesec.cysec.translationtool;
 
 import net.sf.okapi.common.Event;
 import net.sf.okapi.common.EventType;
