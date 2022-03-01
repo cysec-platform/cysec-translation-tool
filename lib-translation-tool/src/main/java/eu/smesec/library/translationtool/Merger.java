@@ -107,25 +107,29 @@ public class Merger {
         final TranslationApplier ta = new TranslationApplier(trgLocale);
 
         // load all available translations
-        log.info("Reading translations from '{}'", xlfFile);
+        log.info("Reading translation entries from '{}'", xlfFile);
         try (IFilter filter = new XLIFFFilter()) {
             filter.open(new RawDocument(xlfFile.toUri(), StandardCharsets.UTF_8.name(), srcLocale, trgLocale));
             while (filter.hasNext()) {
                 Event event = filter.next();
                 if (event.getEventType() == EventType.TEXT_UNIT) {
                     final ITextUnit textUnit = event.getTextUnit();
-                    if (textUnit.getTargetLocales().size() > 1) {
-                        throw new IllegalArgumentException("More than one target language in XLIFF file");
-                    }
-                    final LocaleId localeId = textUnit.getTargetLocales().iterator().next();
-                    if (trgLocale != localeId) {
-                        throw new IllegalArgumentException("Requested target languages does not match translation");
+                    if (!textUnit.getTargetLocales().isEmpty()) {
+                        if (textUnit.getTargetLocales().size() > 1) {
+                            throw new IllegalArgumentException("More than one target language in XLIFF file for id=" + textUnit.getId());
+                        }
+                        final LocaleId localeId = textUnit.getTargetLocales().iterator().next();
+                        if (trgLocale != localeId) {
+                            throw new IllegalArgumentException("Requested target languages does not match translation (id=" + textUnit.getId() + ")");
+                        }
+                    } else {
+                        log.debug("Translation entry contains no target element -> {}", textUnit.getId());
                     }
                     ta.learn(textUnit);
                 }
             }
         }
-        log.info("Loaded {} translations", ta.memoryCount());
+        log.info("Loaded {} translation entries", ta.memoryCount());
 
         // update general attributes with translations
         ta.apply(TextUnitId.attr(TextUnitId.COACH_READABLE_NAME), questionnaire::setReadableName);
