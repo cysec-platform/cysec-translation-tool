@@ -48,7 +48,7 @@
       </trans-unit>
       <trans-unit id="QST:q2||OPT:q2o2||comment">
         <source xml:lang="en">Comment 2</source>
-        <target/>
+        <!-- missing target element -->
       </trans-unit>
       <trans-unit id="QST:q2||OPT:q2o1||text">
         <source xml:lang="en">Option 1</source>
