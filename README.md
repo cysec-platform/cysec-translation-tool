@@ -1,5 +1,12 @@
 # CYSEC Translation Tool
 
+You might find documentations of other parts of the CySec project useful:
+
+- [CySec Platform](https://github.com/cysec-platform/cysec-platform/wiki)
+- [Coach Standard Language](https://github.com/cysec-platform/coach-standard-language/wiki)
+- [CySec Coach Maven Plugin](https://github.com/cysec-platform/cysec-coach-maven-plugin)
+- [CySec Flatifier](https://github.com/cysec-platform/cysec-flatifier)
+
 This tool supports the translation and build process for multilingual coaches.
 It allows extracting text elements of a coach to XLIFF while assigning stable identifiers
 for the text blocks. Furthermore, the tool can merge translations in XLIFF format with the
